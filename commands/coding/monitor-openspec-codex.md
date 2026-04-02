@@ -38,7 +38,7 @@ You are the SUPERVISOR. Follow this procedure in English only.
 - `openspec/changes/<change-id>/progress.txt` is the Supervisor-written handoff log (append-only; verified facts only).
 
 # Single Codex command constant (maintain ONLY ONE copy)
-CODEX_CMD = codex exec --full-auto --skip-git-repo-check --model gpt-5.2 -c model_reasoning_effort=medium
+CODEX_CMD = codex exec --full-auto --skip-git-repo-check --model gpt-5.3-codex -c model_reasoning_effort=medium
 
 Inputs:
 - change-id: $ARGUMENTS
@@ -213,11 +213,11 @@ Execution Steps (Do exactly this):
    - `openspec/changes/$ARGUMENTS/feature_list.json`
 2. Construct a prompt for the CLI using the template below.
 3. Run exactly ONE Bash command:
-   codex exec --full-auto --skip-git-repo-check --model gpt-5.2 -c model_reasoning_effort=medium "$(cat <<'PROMPT'<INLINE_PROMPT>PROMPT)"
+   codex exec --full-auto --skip-git-repo-check --model gpt-5.3-codex -c model_reasoning_effort=medium "$(cat <<'PROMPT'<INLINE_PROMPT>PROMPT)"
 4. Verify the CLI updated `tasks.md` under THIS task ONLY (no checkbox toggles).
    Verify the Worker output is BUNDLE-ready (and ONLY bundle-ready):
    - Under THIS task, there is EXACTLY ONE single-line `BUNDLE (RUN #<RUN_COUNTER>): ...` pointer that targets a concrete run-folder:
-     - includes `CODEX_CMD=codex exec --full-auto --skip-git-repo-check --model gpt-5.2 -c model_reasoning_effort=medium`
+     - includes `CODEX_CMD=codex exec --full-auto --skip-git-repo-check --model gpt-5.3-codex -c model_reasoning_effort=medium`
      - includes `SCOPE: <CLI|GUI|MIXED>`
      - includes `VALIDATION_BUNDLE: auto_test_openspec/$ARGUMENTS/run-.../`
      - includes `HOW_TO_RUN: run.sh/run.bat`
@@ -289,7 +289,7 @@ B) tasks.md bookkeeping (Worker-owned; single-line; NO conclusions)
   - MUST NOT write any `EVIDENCE (RUN #...)` line
   - MUST NOT write any PASS/FAIL/RESULT/validated= conclusions
 - The single BUNDLE line MUST include ONLY:
-  - `CODEX_CMD=codex exec --full-auto --skip-git-repo-check --model gpt-5.2 -c model_reasoning_effort=medium`
+  - `CODEX_CMD=codex exec --full-auto --skip-git-repo-check --model gpt-5.3-codex -c model_reasoning_effort=medium`
   - `SCOPE: <CLI|GUI|MIXED>`
   - `VALIDATION_BUNDLE: auto_test_openspec/$ARGUMENTS/run-<RUN4>__task-<TASK_NUM>__ref-<REF>__<YYYYMMDDThhmmssZ>`
   - `HOW_TO_RUN: run.sh/run.bat`
